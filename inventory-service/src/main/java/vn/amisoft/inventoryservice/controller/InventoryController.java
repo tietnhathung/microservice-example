@@ -3,17 +3,23 @@ package vn.amisoft.inventoryservice.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import vn.amisoft.inventoryservice.dto.InventoryResponse;
+import vn.amisoft.inventoryservice.model.Inventory;
 import vn.amisoft.inventoryservice.service.InventoryService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/Inventory")
+@RequestMapping("api/inventory")
 public class InventoryController {
     public final InventoryService inventoryService;
 
-    @GetMapping("/{sku-code}")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Boolean isInStock(@PathVariable("sku-code") String skuCode){
-        return inventoryService.isInStock(skuCode);
+    public List<InventoryResponse> isInStock(@RequestParam List<String> skuCodes){
+
+        return inventoryService.isInStock(skuCodes);
+
     }
 }

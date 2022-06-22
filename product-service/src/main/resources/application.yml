@@ -1,5 +1,11 @@
 spring:
+  application:
+    name: product-service
   data:
     mongodb:
       uri: mongodb+srv://root:yPGVVWCm0fD7Gh8i@cluster0.ia3yz.mongodb.net/?retryWrites=true&w=majority
       database: microservice-product
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

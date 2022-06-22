@@ -22,7 +22,7 @@ public class Order {
 
     private String orderNumber;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order")
     @ToString.Exclude
     private List<OrderLineItems> orderLineItems = new ArrayList<>();
 
