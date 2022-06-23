@@ -23,9 +23,6 @@ public class InventoryService {
     @SneakyThrows
     @Transactional(readOnly = true)
     public List<InventoryResponse> isInStock(List<String> skuCode){
-        log.info("Wait started");
-        Thread.sleep(10000);
-        log.info("Wait ended");
         List<Inventory> inventories =  inventoryRepository.findBySkuCodeIn(skuCode);
         return skuCode.stream().map( s -> {
             Optional<Inventory> inventoryOptional = inventories.stream().filter(inventory1 -> s.equals(inventory1.getSkuCode())).findFirst();
